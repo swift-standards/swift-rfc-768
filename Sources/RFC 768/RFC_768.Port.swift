@@ -10,7 +10,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Standards
+public import Standard_Library_Extensions
 
 extension RFC_768 {
     /// UDP port number per RFC 768

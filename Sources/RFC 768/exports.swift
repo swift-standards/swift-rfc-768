@@ -12,4 +12,4 @@
 
 @_exported public import INCITS_4_1986
 @_exported public import RFC_791
-@_exported public import Standards
+@_exported public import Standard_Library_Extensions

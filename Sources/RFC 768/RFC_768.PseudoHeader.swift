@@ -11,7 +11,7 @@
 // ===----------------------------------------------------------------------===//
 
 public import RFC_791
-public import Standards
+public import Standard_Library_Extensions
 
 extension RFC_768 {
     /// IPv4 Pseudo-header for UDP checksum calculation per RFC 768
