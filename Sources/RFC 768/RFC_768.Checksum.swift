@@ -81,11 +81,11 @@ extension RFC_768.Checksum {
         data: D
     ) -> RFC_768.Checksum
     where
-        P: Collection,
+        P: Swift.Collection,
         P.Element == Byte,
-        H: Collection,
+        H: Swift.Collection,
         H.Element == Byte,
-        D: Collection,
+        D: Swift.Collection,
         D.Element == Byte
     {
 
@@ -109,7 +109,7 @@ extension RFC_768.Checksum {
     }
 
     /// Sums 16-bit words from a byte collection
-    private static func sumWords<Bytes: Collection>(
+    private static func sumWords<Bytes: Swift.Collection>(
         _ initial: UInt32,
         bytes: Bytes
     ) -> UInt32 where Bytes.Element == Byte {
@@ -139,11 +139,11 @@ extension RFC_768.Checksum {
         data: D
     ) -> Bool
     where
-        P: Collection,
+        P: Swift.Collection,
         P.Element == Byte,
-        H: Collection,
+        H: Swift.Collection,
         H.Element == Byte,
-        D: Collection,
+        D: Swift.Collection,
         D.Element == Byte
     {
 
@@ -167,7 +167,7 @@ extension RFC_768.Checksum {
     ///
     /// - Parameter bytes: Binary data containing the checksum (2 bytes)
     /// - Throws: `Error` if there are insufficient bytes
-    public init<Bytes: Collection>(bytes: Bytes) throws(Error)
+    public init<Bytes: Swift.Collection>(bytes: Bytes) throws(Error)
     where Bytes.Element == Byte {
         var iterator = bytes.makeIterator()
 

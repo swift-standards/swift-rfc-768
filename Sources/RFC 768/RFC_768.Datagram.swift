@@ -69,7 +69,7 @@ extension RFC_768.Datagram {
         }
 
         let length: RFC_768.Length
-        do {
+        do throws(RFC_768.Length.Error) {
             length = try RFC_768.Length(UInt16(totalLength))
         } catch {
             throw .length(error)
@@ -135,10 +135,10 @@ extension RFC_768.Datagram {
     ///
     /// - Parameter bytes: Binary data containing the datagram
     /// - Throws: `Error` if parsing fails
-    public init<Bytes: Collection>(bytes: Bytes) throws(Error)
+    public init<Bytes: Swift.Collection>(bytes: Bytes) throws(Error)
     where Bytes.Element == Byte {
         let header: RFC_768.Header
-        do {
+        do throws(RFC_768.Header.Error) {
             header = try RFC_768.Header(bytes: bytes)
         } catch {
             throw .header(error)

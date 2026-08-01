@@ -75,7 +75,7 @@ extension RFC_768.Header {
     ///
     /// - Parameter bytes: Binary data containing the header (8+ bytes)
     /// - Throws: `Error` if parsing fails
-    public init<Bytes: Collection>(bytes: Bytes) throws(Error)
+    public init<Bytes: Swift.Collection>(bytes: Bytes) throws(Error)
     where Bytes.Element == Byte {
         guard bytes.count >= RFC_768.headerSize else {
             throw .insufficientBytes(bytes.count)
@@ -89,25 +89,25 @@ extension RFC_768.Header {
             return bytes[start..<index]
         }
 
-        do {
+        do throws(RFC_768.Port.Error) {
             self.source = try RFC_768.Port(bytes: advance(2))
         } catch {
             throw .source(error)
         }
 
-        do {
+        do throws(RFC_768.Port.Error) {
             self.destination = try RFC_768.Port(bytes: advance(2))
         } catch {
             throw .destination(error)
         }
 
-        do {
+        do throws(RFC_768.Length.Error) {
             self.length = try RFC_768.Length(bytes: advance(2))
         } catch {
             throw .length(error)
         }
 
-        do {
+        do throws(RFC_768.Checksum.Error) {
             self.checksum = try RFC_768.Checksum(bytes: advance(2))
         } catch {
             throw .checksum(error)
