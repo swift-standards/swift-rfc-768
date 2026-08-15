@@ -35,12 +35,16 @@ extension RFC_768.Header.Error: CustomStringConvertible {
         switch self {
         case .insufficientBytes(let count):
             return "Header requires 8 bytes, got \(count)"
+
         case .source(let error):
             return "Invalid source port: \(error)"
+
         case .destination(let error):
             return "Invalid destination port: \(error)"
+
         case .length(let error):
             return "Invalid length: \(error)"
+
         case .checksum(let error):
             return "Invalid checksum: \(error)"
         }

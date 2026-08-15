@@ -32,10 +32,13 @@ extension RFC_768.Datagram.Error: CustomStringConvertible {
         switch self {
         case .dataTooLarge(let size):
             return "Data too large: \(size) bytes exceeds maximum"
+
         case .length(let error):
             return "Invalid length: \(error)"
+
         case .header(let error):
             return "Invalid header: \(error)"
+
         case .insufficientData(let expected, let got):
             return "Insufficient data: expected \(expected) bytes, got \(got)"
         }
