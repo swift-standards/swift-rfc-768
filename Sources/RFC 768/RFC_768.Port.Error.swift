@@ -26,6 +26,7 @@ extension RFC_768.Port.Error: CustomStringConvertible {
         switch self {
         case .empty:
             return "Port bytes cannot be empty"
+
         case .insufficientBytes:
             return "Port requires 2 bytes"
         }

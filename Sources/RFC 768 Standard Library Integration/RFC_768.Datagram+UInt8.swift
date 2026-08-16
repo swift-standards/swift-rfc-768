@@ -24,6 +24,11 @@ extension RFC_768.Datagram {
         data: [UInt8],
         checksum: RFC_768.Checksum = .zero
     ) throws(RFC_768.Datagram.Error) {
-        try self.init(source: source, destination: destination, data: [Byte](data), checksum: checksum)
+        try self.init(
+            source: source,
+            destination: destination,
+            data: [Byte](data),
+            checksum: checksum
+        )
     }
 }

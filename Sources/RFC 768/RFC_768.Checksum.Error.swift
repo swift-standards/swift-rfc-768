@@ -26,6 +26,7 @@ extension RFC_768.Checksum.Error: CustomStringConvertible {
         switch self {
         case .empty:
             return "Checksum bytes cannot be empty"
+
         case .insufficientBytes:
             return "Checksum requires 2 bytes"
         }
