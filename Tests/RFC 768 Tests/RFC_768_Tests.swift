@@ -1,15 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// Copyright (c) 2025 Coen ten Thije Boonkkamp
-// Licensed under Apache License v2.0
-//
-// See LICENSE.txt for license information
-// See CONTRIBUTORS.txt for the list of project contributors
-//
-// SPDX-License-Identifier: Apache-2.0
-//
-// ===----------------------------------------------------------------------===//
-
 import RFC_768
 import Testing
 
@@ -57,7 +45,7 @@ extension RFC_768 {
 
                 @Test
                 func `Port byte parsing`() throws {
-                    let bytes: [Byte] = [0x1F, 0x90]  // 8080 in big-endian
+                    let bytes: [Byte] = [0x1F, 0x90]
                     let port = try RFC_768.Port(bytes: bytes)
                     #expect(port.rawValue == 8080)
                 }
@@ -77,7 +65,7 @@ extension RFC_768 {
                 func `Valid length creation`() throws {
                     let length = try RFC_768.Length(20)
                     #expect(length.rawValue == 20)
-                    #expect(length.data == 12)  // 20 - 8 = 12 bytes of data
+                    #expect(length.data == 12)
                 }
 
                 @Test
@@ -89,7 +77,7 @@ extension RFC_768 {
 
                 @Test
                 func `Length byte parsing`() throws {
-                    let bytes: [Byte] = [0x00, 0x14]  // 20 in big-endian
+                    let bytes: [Byte] = [0x00, 0x14]
                     let length = try RFC_768.Length(bytes: bytes)
                     #expect(length.rawValue == 20)
                 }
@@ -128,12 +116,12 @@ extension RFC_768 {
 
                 @Test
                 func `Header byte parsing`() throws {
-                    // Source: 12345 (0x3039), Dest: 53 (0x0035), Length: 20 (0x0014), Checksum: 0
+
                     let bytes: [Byte] = [
-                        0x30, 0x39,  // Source port
-                        0x00, 0x35,  // Destination port
-                        0x00, 0x14,  // Length
-                        0x00, 0x00,  // Checksum
+                        0x30, 0x39,
+                        0x00, 0x35,
+                        0x00, 0x14,
+                        0x00, 0x00,
                     ]
                     let header = try RFC_768.Header(bytes: bytes)
                     #expect(header.source.rawValue == 12345)
@@ -153,7 +141,7 @@ extension RFC_768 {
                         destination: .dns,
                         data: data
                     )
-                    #expect(datagram.header.length.rawValue == 12)  // 8 + 4
+                    #expect(datagram.header.length.rawValue == 12)
                     #expect(datagram.data == data)
                 }
             }

@@ -33,7 +33,7 @@ extension RFC_768.Datagram {
                     destination: .syslog,
                     data: uint8Data
                 )
-                #expect(datagram.header.length.rawValue == 12)  // 8 header + 4 data
+                #expect(datagram.header.length.rawValue == 12)
                 #expect(datagram.data.count == 4)
             }
         }

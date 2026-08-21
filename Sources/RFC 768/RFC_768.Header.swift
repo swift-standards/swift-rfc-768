@@ -1,59 +1,13 @@
-// ===----------------------------------------------------------------------===//
-//
-// Copyright (c) 2025 Coen ten Thije Boonkkamp
-// Licensed under Apache License v2.0
-//
-// See LICENSE.txt for license information
-// See CONTRIBUTORS.txt for the list of project contributors
-//
-// SPDX-License-Identifier: Apache-2.0
-//
-// ===----------------------------------------------------------------------===//
-
 import Standard_Library_Extensions
 
 extension RFC_768 {
-    /// UDP header per RFC 768
-    ///
-    /// The 8-octet UDP header consists of:
-    /// - Source Port (16 bits)
-    /// - Destination Port (16 bits)
-    /// - Length (16 bits)
-    /// - Checksum (16 bits)
-    ///
-    /// ```
-    ///  0      7 8     15 16    23 24    31
-    /// +--------+--------+--------+--------+
-    /// |     Source      |   Destination   |
-    /// |      Port       |      Port       |
-    /// +--------+--------+--------+--------+
-    /// |     Length      |    Checksum     |
-    /// +--------+--------+--------+--------+
-    /// ```
-    ///
-    /// ## Example
-    ///
-    /// ```swift
-    /// let header = RFC_768.Header(
-    ///     source: 12345,
-    ///     destination: .dns,
-    ///     length: try .init(20),
-    ///     checksum: .zero
-    /// )
-    /// ```
+
     public struct Header: Hashable, Sendable {
         public let source: Port
         public let destination: Port
         public let length: Length
         public let checksum: Checksum
 
-        /// Creates a UDP header
-        ///
-        /// - Parameters:
-        ///   - source: Source port number
-        ///   - destination: Destination port number
-        ///   - length: Total datagram length
-        ///   - checksum: UDP checksum
         public init(
             source: Port,
             destination: Port,
@@ -68,13 +22,8 @@ extension RFC_768 {
     }
 }
 
-// MARK: - Byte Parsing
-
 extension RFC_768.Header {
-    /// Creates a Header from bytes
-    ///
-    /// - Parameter bytes: Binary data containing the header (8+ bytes)
-    /// - Throws: `Error` if parsing fails
+
     public init<Bytes: Swift.Collection>(bytes: Bytes) throws(Error)
     where Bytes.Element == Byte {
         guard bytes.count >= RFC_768.headerSize else {
@@ -114,8 +63,6 @@ extension RFC_768.Header {
         }
     }
 }
-
-// MARK: - Binary.Serializable
 
 extension RFC_768.Header: Binary.Serializable {
     public static func serialize<Buffer: RangeReplaceableCollection>(
