@@ -1,4 +1,4 @@
-internal import Byte_Primitives
+internal import Byte
 public import RFC_768
 
 extension RFC_768.Datagram {

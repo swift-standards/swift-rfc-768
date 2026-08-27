@@ -12,8 +12,8 @@ extension Target.Dependency {
         package: "swift-standard-library-extensions"
     )
     static let incits41986 = Self.product(
-        name: "ASCII Primitives",
-        package: "swift-ascii-primitives"
+        name: "ASCII",
+        package: "swift-ascii"
     )
     static let rfc791 = Self.product(name: "RFC 791", package: "swift-rfc-791")
 }
@@ -35,15 +35,15 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-standard-library-extensions.git",
+            url: "https://github.com/swift-molecules/swift-standard-library-extensions.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ascii-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ascii.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-byte-primitives.git",
+            url: "https://github.com/swift-molecules/swift-byte.git",
             branch: "main"
         ),
         .package(url: "https://github.com/swift-ietf/swift-rfc-791.git", branch: "main"),
@@ -58,8 +58,8 @@ let package = Package(
             dependencies: [
                 "RFC 768",
                 .product(
-                    name: "Byte Primitives Standard Library Integration",
-                    package: "swift-byte-primitives"
+                    name: "Byte Standard Library Integration",
+                    package: "swift-byte"
                 ),
             ]
         ),
